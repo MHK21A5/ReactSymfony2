@@ -1,21 +1,14 @@
 import React, {Component, createContext} from 'react';
+import axios from "axios";
 export const TodoContext = createContext();
 class TodoContextProvider extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            todos: [
-                {id : 1 , name :'do smth'},
-                {id : 2,name :'do smth1'},
-                {id : 3 ,name :'do smth2'},
-                {id : 4 ,name :'do smth3'},
-                {id : 5 ,name :'do smth4'},
-                {id : 6 ,name :'do smth5'}
-
-
-            ],
-        }
+            todos: [],
+        };
+        this.readTodo();
     }
 
     //create
@@ -30,7 +23,17 @@ class TodoContextProvider extends Component {
 
     }
     //read
-    readTodo(){}
+    readTodo(){
+        axios.get('/api/todo/read')
+            .then(response =>{
+            //    console.log(response.data);//axios response to the data retrived from symfony
+                this.setState({
+                    todos: response.data,
+                })
+            }).catch(error =>{
+                console.error(error);
+        })
+    }
 
     //update
     updateTodo(data){

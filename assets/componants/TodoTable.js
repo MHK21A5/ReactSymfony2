@@ -18,14 +18,6 @@ function TodoTable() {
     const [todoToBeDeleted,setTodoToBeDeleted]=useState(null)
 
 
-    useEffect(() => { //log error
-        if (!editIsShown) {
-            console.log("Closed edit mode."); // Confirm the close action
-        }
-    }, [editIsShown]);
-
-
-
     return (
         <Fragment>
         <form onSubmit={(event) => {
@@ -44,7 +36,8 @@ function TodoTable() {
                         </TableHead>
                         <TableBody>
                             <TableRow>
-                                <TableCell><TextField value={addTodo} onChange={(event)=>{setAddTodo(event.target.value)}} label="new task" fullWidth={true}/>
+                                <TableCell>
+                                    <TextField value={addTodo} onChange={(event)=>{setAddTodo(event.target.value)}} label="new task" fullWidth={true}/>
                                 </TableCell>
                                 <TableCell align="right">
                                 <IconButton type="submit">
