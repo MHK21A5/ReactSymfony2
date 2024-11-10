@@ -20,7 +20,7 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.componants)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addEntry('app', './assets/app.componants')
+    .addEntry('app', './assets/app.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.componants)
     .enableStimulusBridge('./assets/controllers.json')
