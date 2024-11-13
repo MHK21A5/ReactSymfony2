@@ -22,7 +22,7 @@ function DeleteDialog(props) {
               <Button onClick={hide}>Cancel</Button>
               <Button onClick={()=>{
                   context.deleteTodo({id: props.todo.id, name: props.todo.name});
-                  {hide}
+                  hide();
               }}>
                   Delete
               </Button>

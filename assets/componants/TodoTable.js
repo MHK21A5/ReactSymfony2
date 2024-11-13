@@ -1,4 +1,4 @@
-import React, {Fragment, useContext, useState,useEffect} from 'react';
+import React, {Fragment, useContext, useState} from 'react';
 import {TodoContext} from "../contexts/TodoContext";
 import {Table, TableBody, TableCell, TableHead, TableRow, IconButton, TextField} from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
@@ -65,6 +65,7 @@ function TodoTable() {
                                                             <IconButton onClick={()=>{
                                                                 context.updateTodo({id: todo.id, name : editTodo});
                                                                 setEditIsShown(null);
+                                                                hide();
                                                             }}
                                                             ><DoneIcon/></IconButton>
                                                         </Fragment>,
@@ -81,8 +82,9 @@ function TodoTable() {
                                         <IconButton onClick={()=> {setEditIsShown(todo.id);setEditTodo(todo.name)}}>
                                             <EditIcon/>
                                         </IconButton>
-                                        <IconButton onClick={()=>{setDeleteConfirmationIsShown(true); setTodoToBeDeleted(todo)}}>
-                                            <DeleteIcon/></IconButton>
+                                            <IconButton onClick={()=>{setDeleteConfirmationIsShown(true); setTodoToBeDeleted(todo)}}>
+                                                <DeleteIcon/>
+                                            </IconButton>
                                     </TableCell>
                                 </TableRow>
                             ))}
